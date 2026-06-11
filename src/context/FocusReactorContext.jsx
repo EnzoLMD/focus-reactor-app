@@ -25,9 +25,22 @@ export const FocusReactorProvider = ({ children }) => {
   const [historique, setHistorique] = useState([]);
 
   // Préférences utilisateur
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState(() => {
+    // Initialiser le thème depuis localStorage immédiatement
+    try {
+      const savedTheme = localStorage.getItem('theme');
+      return savedTheme || 'dark';
+    } catch {
+      return 'dark';
+    }
+  });
   const [volume, setVolume] = useState(100);
   const [tailleTexte, setTailleTexte] = useState(16);
+
+  // Appliquer le thème initial au montage du provider
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, []);
 
   // Charger les données du localStorage au montage
   useEffect(() => {
