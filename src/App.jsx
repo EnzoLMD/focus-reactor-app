@@ -8,6 +8,7 @@ import Game from './pages/Game';
 import Results from './pages/Results';
 import Stats from './pages/Stats';
 import Settings from './pages/Settings';
+import Footer from './components/Footer';
 
 /**
  * Composant App principal
@@ -16,21 +17,27 @@ import Settings from './pages/Settings';
  * - La configuration de React Router
  * - Le contexte global Focus Reactor
  * - Les routes de l'application
+ * - Le Footer global
  */
 function App() {
   return (
     <FocusReactorProvider>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/game" element={<Game />} />
-          <Route path="/results" element={<Results />} />
-          <Route path="/stats" element={<Stats />} />
-          <Route path="/settings" element={<Settings />} />
-          
-          {/* Route 404 */}
-          <Route path="*" element={<Home />} />
-        </Routes>
+        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+          <div style={{ flex: 1 }}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/game" element={<Game />} />
+              <Route path="/results" element={<Results />} />
+              <Route path="/stats" element={<Stats />} />
+              <Route path="/settings" element={<Settings />} />
+              
+              {/* Route 404 */}
+              <Route path="*" element={<Home />} />
+            </Routes>
+          </div>
+          <Footer />
+        </div>
       </BrowserRouter>
     </FocusReactorProvider>
   );

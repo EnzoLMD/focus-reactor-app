@@ -97,18 +97,24 @@ export const useGameLogic = (profil) => {
     // Timer
     timerIntervalRef.current = setInterval(() => {
       setTempsRestant(prev => {
-        if (prev <= 1) {
-          setGameActive(false);
-          clearInterval(timerIntervalRef.current);
-          clearInterval(gameLoopRef.current);
+        const nextVal = prev - 1;
+        if (nextVal <= 0) {
+          // Arrêter après le décompte
+          setTimeout(() => {
+            setGameActive(false);
+            clearInterval(timerIntervalRef.current);
+            clearInterval(gameLoopRef.current);
+          }, 100);
           return 0;
         }
-        return prev - 1;
+        return nextVal;
       });
     }, 1000);
 
-    // Boucle de génération des cibles
-    let spawned = 0;
+    // Boucle de génération des cibles - première cible immédiatement
+    genererCible();
+    
+    let spawned = 1;
     gameLoopRef.current = setInterval(() => {
       genererCible();
       spawned++;

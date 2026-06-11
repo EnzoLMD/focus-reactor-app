@@ -48,15 +48,17 @@ export const Game = () => {
 
   // Démarrer le jeu au montage
   useEffect(() => {
-    if (!gameStartedRef.current) {
+    if (!gameStartedRef.current && profil) {
       gameStartedRef.current = true;
       demarrerJeu();
     }
 
     return () => {
-      arreterJeu();
+      if (gameActive) {
+        arreterJeu();
+      }
     };
-  }, [demarrerJeu, arreterJeu]);
+  }, []);
 
   // Terminer le jeu quand le timer arrive à 0
   useEffect(() => {
