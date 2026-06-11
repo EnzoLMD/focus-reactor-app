@@ -31,7 +31,33 @@ export const FocusReactorProvider = ({ children }) => {
 
   // Charger les données du localStorage au montage
   useEffect(() => {
-    chargerDonneesLocales();
+    try {
+      const donnees = localStorage.getItem('focusReactorData');
+      if (donnees) {
+        const parsed = JSON.parse(donnees);
+        if (parsed.meilleurScore) setMeilleurScore(parsed.meilleurScore);
+        if (parsed.meilleurCombo) setMeilleurCombo(parsed.meilleurCombo);
+        if (parsed.partiesJouees) setPartiesJouees(parsed.partiesJouees);
+        if (parsed.scoresMoyens) setScoresMoyens(parsed.scoresMoyens);
+        if (parsed.tempsReactionMoyen) setTempsReactionMoyen(parsed.tempsReactionMoyen);
+        if (parsed.historique) setHistorique(parsed.historique);
+      }
+
+      // Préférences - thème très important
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        setTheme(savedTheme);
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      }
+
+      const savedVolume = localStorage.getItem('volume');
+      if (savedVolume) setVolume(parseInt(savedVolume));
+
+      const savedTailleTexte = localStorage.getItem('tailleTexte');
+      if (savedTailleTexte) setTailleTexte(parseInt(savedTailleTexte));
+    } catch (error) {
+      console.error('[v0] Erreur chargement localStorage:', error);
+    }
   }, []);
 
   // Appliquer le thème

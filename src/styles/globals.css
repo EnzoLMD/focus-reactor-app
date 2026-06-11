@@ -72,6 +72,33 @@
 }
 
 /* ============================================
+   Thème Clair (Light Mode)
+   ============================================ */
+
+html[data-theme='light'] {
+  /* Couleurs primaires */
+  --color-bg-primary: #f8f9fa;
+  --color-bg-secondary: #e8eaed;
+  --color-bg-tertiary: #d8dce3;
+
+  /* Accents (inchangés) */
+  --color-accent-cyan: #00a8cc;
+  --color-accent-orange: #ff6b35;
+  --color-accent-orange-dark: #ff4500;
+
+  /* Texte */
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #4a5568;
+  --color-text-tertiary: #718096;
+
+  /* Utilitaires (inchangés) */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-focus: #3b82f6;
+}
+
+/* ============================================
    Reset et Configuration de base
    ============================================ */
 
@@ -86,6 +113,7 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
 }
 
 body {
