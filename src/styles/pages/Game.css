@@ -1,0 +1,180 @@
+/* ============================================
+   GAME PAGE STYLES
+   ============================================ */
+
+.game-page {
+  min-height: 100vh;
+  padding: var(--spacing-lg) 0;
+  background: linear-gradient(135deg, var(--color-bg-primary), var(--color-bg-secondary));
+}
+
+.game-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* En-tête du jeu */
+.game-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--spacing-xl);
+  align-items: center;
+  padding: var(--spacing-lg);
+  background: linear-gradient(135deg, var(--color-bg-secondary), var(--color-bg-tertiary));
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--color-accent-cyan);
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+}
+
+/* Zone de jeu */
+.game-area {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(26, 34, 54, 0.8));
+  border: 3px dashed var(--color-accent-cyan);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: inset 0 0 30px rgba(0, 217, 255, 0.1);
+  animation: slideInUp 0.6s ease-out;
+}
+
+.game-area::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(90deg, rgba(0, 217, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(rgba(0, 217, 255, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.game-over-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+  z-index: 10;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.game-over-text {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  color: var(--color-accent-orange);
+  text-shadow: 0 0 10px rgba(255, 107, 53, 0.8);
+}
+
+/* Statistiques */
+.game-stats {
+  background: linear-gradient(135deg, var(--color-bg-secondary), var(--color-bg-tertiary));
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--color-accent-cyan);
+  display: grid;
+  gap: var(--spacing-lg);
+}
+
+.stats-detail {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.stats-detail p {
+  background-color: rgba(0, 217, 255, 0.05);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--color-accent-cyan);
+  margin: 0;
+  font-size: var(--font-size-sm);
+}
+
+.stats-detail strong {
+  color: var(--color-accent-cyan);
+  font-weight: 700;
+}
+
+/* Bouton Resume */
+.btn-resume {
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  background: linear-gradient(135deg, var(--color-accent-cyan), var(--color-accent-orange));
+  border: none;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  align-self: center;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.btn-resume:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 217, 255, 0.3);
+}
+
+.btn-resume:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+@media (max-width: 1024px) {
+  .game-header {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .game-area {
+    height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .game-area {
+    height: 350px;
+  }
+
+  .game-header {
+    padding: var(--spacing-md);
+  }
+
+  .stats-detail {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .game-area {
+    height: 300px;
+  }
+
+  .game-container {
+    gap: var(--spacing-md);
+    padding: 0 var(--spacing-sm);
+  }
+
+  .game-header {
+    padding: var(--spacing-md);
+    gap: var(--spacing-md);
+  }
+
+  .stats-detail {
+    grid-template-columns: 1fr;
+  }
+
+  .game-stats {
+    padding: var(--spacing-md);
+  }
+}

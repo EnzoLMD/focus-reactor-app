@@ -1,0 +1,111 @@
+/* ============================================
+   TIMER STYLES
+   ============================================ */
+
+.timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 140px;
+}
+
+.timer-circle {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer-svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.timer-bg {
+  stroke: var(--color-bg-tertiary);
+  stroke-width: 3;
+  fill: none;
+}
+
+.timer-progress {
+  stroke: var(--color-accent-cyan);
+  stroke-width: 3;
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 282.7;
+  stroke-dashoffset: 282.7;
+  transition: stroke var(--transition-fast);
+}
+
+.timer-text {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  color: var(--color-accent-cyan);
+  text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+}
+
+/* État: Warning */
+.timer.warning .timer-progress {
+  stroke: var(--color-warning);
+  animation: glow 1s infinite;
+}
+
+.timer.warning .timer-text {
+  color: var(--color-warning);
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+  animation: pulse 0.6s infinite;
+}
+
+/* État: Critical */
+.timer.critical .timer-progress {
+  stroke: var(--color-error);
+  animation: glow 0.5s infinite;
+}
+
+.timer.critical .timer-text {
+  color: var(--color-error);
+  text-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+  animation: pulse 0.3s infinite;
+}
+
+@media (max-width: 768px) {
+  .timer {
+    width: 120px;
+    height: 120px;
+  }
+
+  .timer-circle {
+    width: 80px;
+    height: 80px;
+  }
+
+  .timer-text {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .timer {
+    width: 100px;
+    height: 100px;
+  }
+
+  .timer-circle {
+    width: 70px;
+    height: 70px;
+  }
+
+  .timer-text {
+    font-size: var(--font-size-xl);
+  }
+
+  .timer-svg {
+    width: 70px;
+    height: 70px;
+  }
+}
