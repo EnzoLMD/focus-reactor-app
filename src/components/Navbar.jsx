@@ -22,9 +22,7 @@ export const Navbar = ({ activeRoute }) => {
         </div>
 
         <ul className="navbar-links" role="list">
-          import { Link } from 'react-router-dom';
-
-<li>
+          <li>
             <a 
               href="/" 
               className={`nav-link ${activeRoute === 'home' ? 'active' : ''}`}
