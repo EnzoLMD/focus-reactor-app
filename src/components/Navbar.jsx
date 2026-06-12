@@ -24,26 +24,33 @@ export const Navbar = ({ activeRoute }) => {
         <ul className="navbar-links" role="list">
           import { Link } from 'react-router-dom';
 
-<Link
-  to="/"
-  className={`nav-link ${activeRoute === 'home' ? 'active' : ''}`}
->
-  Accueil
-</Link>
-
-<Link
-  to="/stats"
-  className={`nav-link ${activeRoute === 'stats' ? 'active' : ''}`}
->
-  Statistiques
-</Link>
-
-<Link
-  to="/settings"
-  className={`nav-link ${activeRoute === 'settings' ? 'active' : ''}`}
->
-  Paramètres
-</Link>
+<li>
+            <a 
+              href="/" 
+              className={`nav-link ${activeRoute === 'home' ? 'active' : ''}`}
+              aria-current={activeRoute === 'home' ? 'page' : undefined}
+            >
+              Accueil
+            </a>
+          </li>
+          <li>
+            <a 
+              href="/stats" 
+              className={`nav-link ${activeRoute === 'stats' ? 'active' : ''}`}
+              aria-current={activeRoute === 'stats' ? 'page' : undefined}
+            >
+              Statistiques
+            </a>
+          </li>
+          <li>
+            <a 
+              href="/settings" 
+              className={`nav-link ${activeRoute === 'settings' ? 'active' : ''}`}
+              aria-current={activeRoute === 'settings' ? 'page' : undefined}
+            >
+              Paramètres
+            </a>
+          </li>
         </ul>
 
         <button 
